@@ -21,7 +21,7 @@ export default function DestHead() {
               </div>
                 <button className="action-section" onClick={scroll_down}>
                   <div>See All</div>
-                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3eeb96d1e4c1df8c2aeac0624fcf91ce73c731e5876c02ef1b9e24d2840fcbf5?" className="main-image" />
+                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3eeb96d1e4c1df8c2aeac0624fcf91ce73c731e5876c02ef1b9e24d2840fcbf5?" className="main-image" alt=" "/>
                 </button>
               </div>
             </div>
@@ -30,19 +30,19 @@ export default function DestHead() {
                 <div className="image-group">
                   <div className="image-container">
                     <div className="image-description">
-                      <img loading="lazy" src="https://i.imgur.com/6BMvZJX.jpeg" className="image-small" />
+                      <img loading="lazy" src="https://i.imgur.com/6BMvZJX.jpeg" className="image-small" alt=" "/>
                       <div className="image-caption">Azure Haven</div>
                     </div>
                   </div>
                   <div className="image-container">
                     <div className="image-description">
-                      <img loading="lazy" src="https://i.imgur.com/WDmvSab.jpeg" className="image-small" />
+                      <img loading="lazy" src="https://i.imgur.com/WDmvSab.jpeg" className="image-small" alt=" "/>
                       <div className="image-caption">Serene Sanctuary</div>
                     </div>
                   </div>
                   <div className="image-container">
                     <div className="image-description">
-                      <img loading="lazy" src="https://i.imgur.com/bJVCCxK.jpeg" className="image-small" />
+                      <img loading="lazy" src="https://i.imgur.com/bJVCCxK.jpeg" className="image-small" alt=" "/>
                       <div className="image-caption">Verdant Vista</div>
                     </div>
                   </div>
