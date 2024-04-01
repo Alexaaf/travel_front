@@ -1,0 +1,113 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 4.5rem;
+  }
+  
+  .nav .brand .container {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  
+  .nav .brand .toggle {
+    display: none;
+  }
+  
+  .nav ul {
+    display: flex;
+    gap: 3rem;
+    list-style-type: none;
+  }
+  
+  .nav ul li a {
+    text-decoration: none;
+    color: #0077b6;
+    font-size: 1.2rem;
+    transition: 0.05s ease-in-out;
+  }
+  
+  .nav ul li a:hover, .nav ul li:first-of-type a {
+    color: #023e8a;
+    font-weight: 900;
+  }
+  
+  .nav button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    border: none;
+    color: white;
+    background-color: #48cae4;
+    font-size: 1.1rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .nav button:hover {
+    background-color: #023e8a;
+  }
+  
+  @media screen and (min-width: 280px) and (max-width: 1080px) {
+    .nav .brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .nav .brand .toggle {
+      display: block;
+    }
+  
+    .nav ul, .nav button {
+      display: none;
+    }
+  
+    .responsive-nav {
+      display: none;
+    }
+  
+    .responsive-nav.active {
+      display: flex;
+      position: absolute;
+      z-index: 1;
+      top: 50px;
+      background-color: white;
+      height: 30vh;
+      width: 100%;
+      align-items: center;
+      transition: 0.2s ease-in-out;
+    }
+  
+    .responsive-nav ul {
+      list-style-type: none;
+      width: 100%;
+    }
+  
+    .responsive-nav ul li {
+      width: 100%;
+      margin: 1rem 0;
+      margin-left: 2rem;
+    }
+  
+    .responsive-nav ul li a {
+      text-decoration: none;
+      color: #0077b6;
+      font-size: 1.2rem;
+      transition: 0.05s ease-in-out;
+    }
+  
+    .responsive-nav ul li a:hover, .responsive-nav ul li:first-of-type a {
+      color: #023e8a;
+      font-weight: 900;
+    }
+  }
+  
