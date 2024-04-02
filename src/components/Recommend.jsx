@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Destination1 from "../assets/Destination1.png";
 import Destination2 from "../assets/Destination2.png";
 import Destination3 from "../assets/Destination3.png";
@@ -9,81 +9,73 @@ import './Recommend.css';
 import { BsAirplane } from "react-icons/bs";
 import { BsLuggageFill } from "react-icons/bs";
 import { BsFillHouseFill } from "react-icons/bs";
+import axios from "axios";
 
 
-export default function Recommend() {
-  const data = [
-    {
-      image: Destination1,
-      title: "Singapore",
-      cost: "$1,500",
-      duration: " 2 night trip",
-      distance: "9,000 kms",
-    },
-    {
-      image: Destination2,
-      title: "Thailand",
-      cost: "$1,200",
-      duration: " 2 night trip",
-      distance: "8,000 kms", 
-    },
-    {
-      image: Destination3,
-      title: "Paris",
-      cost: "$700",
-      duration: " 2 night trip",
-      distance: "1,500 kms",
-    },
-    {
-      image: Destination4,
-      title: "New Zealand",
-      cost: "$2,000",
-      duration: " 1 night trip",
-      distance: "18,000 kms", 
-    },
-    {
-      image: Destination5,
-      title: "Bora Bora",
-      cost: "$3,000",
-      duration: " 2 night trip",
-      distance: "15,500 kms", 
-    },
-    {
-      image: Destination6,
-      title: "London",
-      cost: "$800",
-      duration: " 3 night trip",
-      distance: "2,000 kms", 
-    },
-  ];
-  
+export default function Recommend(props) {
+
+  const [data, setData] = useState([]);
+
+  const images = {
+    Singapore: Destination1,
+    Thailand: Destination2,
+    Paris: Destination3,
+    Zealand: Destination4,
+    Bora: Destination5,
+    London: Destination6
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // console.log(props.query);
+      if(props.query === undefined){
+        try {
+          const apiUrl = `http://127.0.0.1:5000/api/destination/get_all`;
+          const response = await axios.get(apiUrl);
+          // console.log(response.data);
+          setData(response.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }else{
+        try {
+          const apiUrl = `http://127.0.0.1:5000/api/destination/location?location=${encodeURIComponent(props.query)}`;
+          const response = await axios.get(apiUrl);
+          // console.log(response.data);
+          setData(response.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+    };
+    fetchData();
+  });
+
   return (
     <section id="recommend" className="recommend">
       <div className="title">
         <h2>TOP BOOK NOW</h2>
       </div>
       <div className="destinations">
-        {data.map((destination, index) => (
-          <div className="destination" key={index}>
-            <img src={destination.image} alt={destination.title} />
-            <div className="dest_title">
-              <h3>{destination.title}</h3>
-              <h4>{destination.cost}</h4>
-            </div>
-            <div className="info">
-              <div className="services">
-                <BsAirplane style={{ color: 'black' }} />
-                <BsFillHouseFill style={{ color: 'black' }} />
-                <BsLuggageFill style={{ color: 'black' }} />
-              </div>
-            </div>            
-            <div className="distance">
-              <span>{destination.distance}</span>
-              <span>{destination.duration}</span>
-            </div>
-            <button className="overlay-button">Explore</button>
+      {data.filter(destination => destination.offer === 0).map((destination) => (
+        <div className="destination" key={destination.id}>
+          <img src={images[destination.image]} alt={destination.name} />
+          <div className="dest_title">
+            <h3>{destination.name}</h3>
+            <h4>${destination.price_pn} per night</h4>
           </div>
-        ))}
+          <div className="info">
+            <p className="description">Available places: {destination.available_places}</p>
+            <div className="services">
+              {destination.plane && <BsAirplane style={{ color: 'black' }} />}
+              {destination.hotel && <BsFillHouseFill style={{ color: 'black' }} />}
+              {destination.baggage && <BsLuggageFill style={{ color: 'black' }} />}
+            </div>
+          </div>
+          {/* <div>Available places: {destination.available_places}</div> */}
+          <button className="overlay-button">Explore</button>
+        </div>
+      ))}
       </div>
     </section>
   );

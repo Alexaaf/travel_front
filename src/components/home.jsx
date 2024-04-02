@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import homeImage from "../assets/maldives.jpg";
+import { useNavigate } from 'react-router-dom';
 import './home.css'; 
 
 export default function Home() {
+
+  const [queryN, setQuery] = useState('sPain');
+  const navigate = useNavigate();
+
+  const goToDestinations = () => {
+    navigate('/destinations', { state: { query: queryN } });
+  }
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
   return (
     <section id="hero" className="hero">
       <div className="background">
@@ -18,7 +31,7 @@ export default function Home() {
         <div className="search">
           <div className="container">
             <label>Destination</label>
-            <input type="text" placeholder="Spain" />
+            <input type="text" placeholder="Spain" onChange={handleInputChange}/>
           </div>
           <div className="container">
             <label>Check-in</label>
@@ -28,7 +41,7 @@ export default function Home() {
             <label>Check-out</label>
             <input type="date" />
           </div>
-          <button>Explore Now</button>
+          <button onClick={goToDestinations}>Explore Now</button>
         </div>
       </div>
     </section>

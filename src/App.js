@@ -4,6 +4,8 @@ import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
 import DestinationsPage from './pages/DestinationsPage';
 import { Route, BrowserRouter as Router, Routes} from 'react-router-dom';
+import LoginPage from './components/loginPage';
+import RegisterPage from './components/register';
 
 export default function App() {
   
@@ -13,6 +15,8 @@ export default function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/destinations" element={<DestinationsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </Router>
   );
