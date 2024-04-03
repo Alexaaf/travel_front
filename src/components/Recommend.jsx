@@ -49,7 +49,10 @@ export default function Recommend(props) {
       }
     };
     fetchData();
-  });
+    const intervalId = setInterval(fetchData, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <section id="recommend" className="recommend">
@@ -64,6 +67,7 @@ export default function Recommend(props) {
             <h3>{destination.name}</h3>
             <h4>${destination.price_pn} per night</h4>
           </div>
+          <h5>{destination.location}</h5>
           <div className="info">
             <p className="description">Available places: {destination.available_places}</p>
             <div className="services">

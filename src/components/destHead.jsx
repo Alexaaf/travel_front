@@ -4,7 +4,10 @@ import "./DestHead.css";
 export default function DestHead() {
 
   const scroll_down = () => {
-    window.scrollTo({ top: 1800, behavior: 'smooth' });
+    const offersSection = document.getElementById("offers");
+    if (offersSection) {
+      offersSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

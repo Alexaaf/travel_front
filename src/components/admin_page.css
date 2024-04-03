@@ -1,0 +1,103 @@
+.header-2{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.header-3{
+    padding: 1rem;
+}
+
+.input-style{
+    border-color: black;
+    border-radius: 0rem;
+    width: 50%;
+}
+
+.boxes{
+    width: 2%;
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.description{
+    width: 50%;
+    border-radius: 0rem;
+}
+
+.button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+button:hover{
+    cursor: pointer;
+}
+
+.add-button{
+    width: 30%;
+    background-color: rgb(24, 184, 187);
+    border: none;
+    border-radius: 2rem;
+    height: 30px;
+}
+
+.table-button{
+    width: 40%;
+    background-color: rgb(24, 184, 187);
+    border: none;
+    border-radius: 2rem;
+    height: 25px;
+}
+
+.update-button{
+    width: 15%;
+    background-color: rgb(24, 184, 187);
+    border: none;
+    border-radius: 2rem;
+    height: 30px;
+}
+
+.add-form{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.update-form{
+    padding: 1rem;
+}
+
+.boxes-tarea{
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.check-boxes{
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    margin: 2px;
+    width: 20%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc; /* Adds a line below each cell */
+}
+
+tbody tr:not(:last-child) td {
+    border-bottom: 2px solid #ccc; /* Adds a line below each row, except the last one */
+}

@@ -59,7 +59,7 @@ const LoginPage = () => {
                 if (response.data.role === "CLIENT") {
                     navigate("/home");
                 } else {
-                    navigate("/contact");
+                    navigate("/agent_page");
                 }
             } else {
                 setError("Invalid email or password");

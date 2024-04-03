@@ -49,10 +49,14 @@ export default function Offers(props) {
       }
     };
     fetchData();
-  });
+
+    const intervalId = setInterval(fetchData, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
   
   return (
-    <section id="recommend" className="recommend">
+    <section id="offers" className="recommend">
       <div className="title">
         <h2>OFFERS</h2>
       </div>
@@ -79,6 +83,7 @@ export default function Offers(props) {
               )}
             </h4>
           </div>
+          <h5>{destination.location}</h5>
           <div className="info">
             <p className="description">Available places: {destination.available_places}</p>
             <div className="services">
