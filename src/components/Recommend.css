@@ -3,13 +3,14 @@
   }
 
   .overlay-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    color: white; 
-    border: none; 
-    
+    border: none;
+    background-color: white;
+    margin: 0px;
+    text-align: unset;
+    padding-block: 0px;
+    padding-inline: 0px;
+    display: unset;
+    font-size: unset;
   }
 
   .dest_title{

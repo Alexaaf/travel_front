@@ -48,6 +48,8 @@ const LoginPage = () => {
                 sessionStorage.setItem("userEmail", response.data.email);
                 sessionStorage.setItem("userRole", response.data.role);
                 sessionStorage.setItem("userName", response.data.name);
+                sessionStorage.setItem("userId", response.data.id);
+
                 // localStorage.setItem('token', response.data.token);
                 // setUserEmail(email);
             

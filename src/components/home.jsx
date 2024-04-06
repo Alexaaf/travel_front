@@ -2,18 +2,49 @@ import React, { useState } from "react";
 import homeImage from "../assets/maldives.jpg";
 import { useNavigate } from 'react-router-dom';
 import './home.css'; 
+import { differenceInCalendarDays, parseISO } from 'date-fns';
 
 export default function Home() {
 
-  const [queryN, setQuery] = useState('sPain');
+  const [queryN, setQuery] = useState({
+    location: '',
+    checkIn: '',
+    checkOut: ''
+  });
+
   const navigate = useNavigate();
 
-  const goToDestinations = () => {
+  const validateDatesAndNavigate = () => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const startDate = parseISO(queryN.checkIn);
+    const endDate = parseISO(queryN.checkOut);
+    
+    if (startDate < today) {
+      alert("The check-in date must be today or in the future.");
+      return;
+    }
+
+    if (differenceInCalendarDays(endDate, startDate) < 1) {
+      alert("The check-out date must be at least one day after the check-in date.");
+      return;
+    }
+
+    if(queryN['checkIn'] === '' || queryN['checkOut'] === ''){
+      alert("Please provide check-in and check-out dates.");
+      return;
+    }
+
     navigate('/destinations', { state: { query: queryN } });
-  }
+  };
 
   const handleInputChange = (event) => {
-    setQuery(event.target.value);
+    const { name, value } = event.target;
+    setQuery((prevQuery) => ({
+      ...prevQuery,
+      [name]: value
+    }));
   };
 
   return (
@@ -24,24 +55,38 @@ export default function Home() {
       <div className="content">
         <div className="title">
           <h1>WELCOME!</h1>
-          <p>
-          Explore beautiful places in the world with Speedy Getaways
-          </p>
+          <p>Explore beautiful places in the world with Speedy Getaways</p>
         </div>
         <div className="search">
           <div className="container">
             <label>Destination</label>
-            <input type="text" placeholder="Spain" onChange={handleInputChange}/>
+            <input
+              name="location"
+              type="text"
+              placeholder="Spain"
+              value={queryN.location}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="container">
             <label>Check-in</label>
-            <input type="date" />
+            <input
+              name="checkIn"
+              type="date"
+              value={queryN.checkIn}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="container">
             <label>Check-out</label>
-            <input type="date" />
+            <input
+              name="checkOut"
+              type="date"
+              value={queryN.checkOut}
+              onChange={handleInputChange}
+            />
           </div>
-          <button onClick={goToDestinations}>Explore Now</button>
+          <button onClick={validateDatesAndNavigate}>Explore Now</button>
         </div>
       </div>
     </section>

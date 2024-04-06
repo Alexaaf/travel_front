@@ -19,14 +19,7 @@ export default function HomePage() {
   }, []);
 
   const getLocation = async () => {
-  //   const location = await axios.get("https://ipapi.co/json")
 
-  //   Cookies.set('geolocation', JSON.stringify(location.data), { expires: 1 });
-  //   const geolocationCookie = Cookies.get('geolocation');
-  //   if (geolocationCookie) {
-  //     const geolocationData = JSON.parse(geolocationCookie);
-  //     console.log(geolocationData);
-  //  }
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
