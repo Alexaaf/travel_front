@@ -11,6 +11,7 @@ import { BsLuggageFill } from "react-icons/bs";
 import { BsFillHouseFill } from "react-icons/bs";
 import axios from "axios";
 import { differenceInCalendarDays } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Recommend(props) {
@@ -55,6 +56,12 @@ export default function Recommend(props) {
       console.error('Error creating reservation:', error);
       alert('Failed to make reservation.');
     }
+  };
+
+  const navigate = useNavigate();
+
+  const handleSeeDetails = (destinationId) => {
+    navigate(`/destination/${destinationId}`);
   };
 
   useEffect(() => {
@@ -159,7 +166,7 @@ export default function Recommend(props) {
                   {destination.baggage && <BsLuggageFill style={{ color: 'black' }} />}
                 </div>
               </div>
-              <button>See Details</button>
+              <button onClick={() => handleSeeDetails(destination.id)}>See Details</button>
             </div>
         ))}
         </div>

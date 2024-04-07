@@ -1,0 +1,16 @@
+.stats-div{
+    display: flex;
+    flex-direction: column;
+    /* width: 70%; */
+    justify-content: center;
+    padding: 20rem;
+    padding-top: 3rem;
+}
+
+.chart-div{
+    padding-top: 3rem;
+}
+
+.h{
+    padding-left: 2rem;
+}
