@@ -15,6 +15,8 @@ import '../components/stats.css';
 import { groupBy } from 'lodash';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function DestinationDetailsPage() {
 
@@ -27,8 +29,19 @@ export default function DestinationDetailsPage() {
         Legend
       );
 
+    const navigate = useNavigate();
     let { id } = useParams();
     const [reservations, setReservations] = useState([]);
+
+    const checkUser = async () => {
+        const role = sessionStorage.getItem("userRole");
+        // console.log(role);
+        if(role !== "AGENT")
+        {
+            navigate('/destinations');
+        }
+        
+      }
 
     useEffect(() => {
         const fetchReservations = async () => {
@@ -39,7 +52,7 @@ export default function DestinationDetailsPage() {
                 console.error('Error fetching reservation data:', error);
             }
         };
-
+        checkUser();
         fetchReservations();
     }, [id]);
 
